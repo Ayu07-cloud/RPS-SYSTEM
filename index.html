@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RPS // SYSTEM</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Scanline overlay -->
+  <div class="scanlines"></div>
+  <div class="noise"></div>
+
+  <!-- Animated grid background -->
+  <div class="grid-bg"></div>
+
+  <!-- Floating particles -->
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <div class="header-glitch" data-text="RPS//SYSTEM">RPS//SYSTEM</div>
+      <div class="header-sub">ROCK · PAPER · SCISSORS · v2.4.1</div>
+      <div class="status-bar">
+        <span class="status-dot"></span>
+        <span class="status-text">SYSTEM ONLINE</span>
+        <span class="divider">|</span>
+        <span id="current-time" class="status-text"></span>
+      </div>
+    </header>
+
+    <!-- Score Board -->
+    <section class="scoreboard">
+      <div class="score-card" id="score-player">
+        <div class="score-label">YOU</div>
+        <div class="score-number" id="player-score">00</div>
+        <div class="score-bar-wrap"><div class="score-bar" id="player-bar"></div></div>
+      </div>
+
+      <div class="score-center">
+        <div class="round-label">ROUND</div>
+        <div class="round-num" id="round-num">01</div>
+        <div class="vs-text">VS</div>
+        <div class="streak-display" id="streak-display">—</div>
+      </div>
+
+      <div class="score-card" id="score-cpu">
+        <div class="score-label">CPU</div>
+        <div class="score-number" id="cpu-score">00</div>
+        <div class="score-bar-wrap"><div class="score-bar" id="cpu-bar"></div></div>
+      </div>
+    </section>
+
+    <!-- Battle Arena -->
+    <section class="arena">
+      <div class="arena-side" id="player-side">
+        <div class="arena-label">PLAYER INPUT</div>
+        <div class="choice-display" id="player-display">
+          <div class="choice-icon pending">?</div>
+          <div class="choice-ripple"></div>
+        </div>
+      </div>
+
+      <div class="arena-center">
+        <div class="clash-fx" id="clash-fx">
+          <div class="clash-ring r1"></div>
+          <div class="clash-ring r2"></div>
+          <div class="clash-ring r3"></div>
+          <span class="clash-text" id="clash-text">CHOOSE</span>
+        </div>
+      </div>
+
+      <div class="arena-side" id="cpu-side">
+        <div class="arena-label">CPU MODULE</div>
+        <div class="choice-display" id="cpu-display">
+          <div class="choice-icon pending">?</div>
+          <div class="choice-ripple"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result Banner -->
+    <div class="result-banner" id="result-banner">
+      <div class="result-text" id="result-text"></div>
+      <div class="result-sub" id="result-sub"></div>
+    </div>
+
+    <!-- Controls -->
+    <section class="controls">
+      <div class="controls-label">// SELECT YOUR WEAPON</div>
+      <div class="buttons-grid">
+        <button class="weapon-btn" id="btn-rock" data-choice="rock">
+          <div class="btn-glow"></div>
+          <div class="btn-icon">✊</div>
+          <div class="btn-label">ROCK</div>
+          <div class="btn-key">[ 1 ]</div>
+          <div class="btn-border-anim"></div>
+        </button>
+
+        <button class="weapon-btn" id="btn-paper" data-choice="paper">
+          <div class="btn-glow"></div>
+          <div class="btn-icon">✋</div>
+          <div class="btn-label">PAPER</div>
+          <div class="btn-key">[ 2 ]</div>
+          <div class="btn-border-anim"></div>
+        </button>
+
+        <button class="weapon-btn" id="btn-scissors" data-choice="scissors">
+          <div class="btn-glow"></div>
+          <div class="btn-icon">✌️</div>
+          <div class="btn-label">SCISSORS</div>
+          <div class="btn-key">[ 3 ]</div>
+          <div class="btn-border-anim"></div>
+        </button>
+      </div>
+    </section>
+
+    <!-- Log Terminal -->
+    <section class="log-section">
+      <div class="log-header">
+        <span class="log-title">// BATTLE LOG</span>
+        <button class="log-clear-btn" id="log-clear">CLR</button>
+      </div>
+      <div class="log-terminal" id="log-terminal">
+        <div class="log-entry init">
+          <span class="log-time">00:00:00</span>
+          <span class="log-msg">» System initialized. Waiting for player input...</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span>Press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> for Rock · Paper · Scissors</span>
+      <span class="footer-right">Press <kbd>R</kbd> to reset</span>
+    </footer>
+
+  </div>
+
+  <!-- Win Modal -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box" id="modal-box">
+      <div class="modal-scanlines"></div>
+      <div class="modal-title" id="modal-title">GAME OVER</div>
+      <div class="modal-result" id="modal-result"></div>
+      <div class="modal-stats" id="modal-stats"></div>
+      <button class="modal-btn" id="modal-restart">⟳ RESTART SYSTEM</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
